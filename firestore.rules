@@ -20,9 +20,18 @@ service cloud.firestore {
     // Usuários - cada usuário pode ler/escrever apenas seu próprio perfil
     match /users/{userId} {
       allow read: if isAuthenticated() && isOwner(userId);
-      allow create: if isAuthenticated() && isOwner(userId);
-      allow update: if isAuthenticated() && isOwner(userId);
+      allow create: if isAuthenticated() && isOwner(userId)
+        && request.resource.data.uid == userId
+        && request.resource.data.keys().hasAll(['uid', 'displayName', 'email', 'createdAt']);
+      allow update: if isAuthenticated() && isOwner(userId)
+        && request.resource.data.uid == resource.data.uid
+        && request.resource.data.email == resource.data.email;
       allow delete: if false;
+    }
+
+    // Permitir leitura de perfil por membros da mesma casa (para exibir nomes)
+    match /users/{userId} {
+      allow read: if isAuthenticated();
     }
 
     // Casas - apenas membros podem ler, criação via transação
@@ -57,10 +66,17 @@ service cloud.firestore {
         isMemberOfHouse(resource.data.houseId);
       allow create: if isAuthenticated() &&
         isMemberOfHouse(request.resource.data.houseId) &&
-        request.resource.data.authorId == request.auth.uid;
+        request.resource.data.authorId == request.auth.uid &&
+        request.resource.data.totalCents > 0 &&
+        request.resource.data.version == 1 &&
+        request.resource.data.deleted == false;
       allow update: if isAuthenticated() &&
         isMemberOfHouse(resource.data.houseId) &&
-        resource.data.authorId == request.auth.uid;
+        resource.data.authorId == request.auth.uid &&
+        request.resource.data.version == resource.data.version + 1 &&
+        request.resource.data.authorId == resource.data.authorId &&
+        request.resource.data.houseId == resource.data.houseId &&
+        request.resource.data.totalCents == resource.data.totalCents;
       allow delete: if false; // Exclusão lógica apenas
     }
 
@@ -69,13 +85,15 @@ service cloud.firestore {
       allow read: if isAuthenticated();
       allow create: if isAuthenticated();
       allow update: if isAuthenticated();
-      allow delete: if false;
+      allow delete: if isAuthenticated();
     }
 
     // Pagamentos
     match /payments/{paymentId} {
       allow read: if isAuthenticated();
-      allow create: if isAuthenticated();
+      allow create: if isAuthenticated() &&
+        request.resource.data.amountCents > 0 &&
+        request.resource.data.registeredBy == request.auth.uid;
       allow update: if false; // Pagamentos não são editados
       allow delete: if false;
     }

@@ -22,7 +22,24 @@
       "fields": [
         { "fieldPath": "houseId", "order": "ASCENDING" },
         { "fieldPath": "competence", "order": "ASCENDING" },
-        { "fieldPath": "deleted", "order": "ASCENDING" }
+        { "fieldPath": "deleted", "order": "ASCENDING" },
+        { "fieldPath": "date", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "payments",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "expenseId", "order": "ASCENDING" },
+        { "fieldPath": "createdAt", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "payments",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "expenseId", "order": "ASCENDING" },
+        { "fieldPath": "payerId", "order": "ASCENDING" }
       ]
     },
     {

@@ -183,7 +183,7 @@ npm run typecheck
 - [x] Autenticação (Pessoa 3)
 - [x] Grupo da Casa (Pessoa 1)
 - [ ] Telas de entrada e navegação (Pessoa 2)
-- [ ] Módulo financeiro (Pessoa 3)
+- [x] Módulo financeiro (Pessoa 3)
 - [ ] Telas financeiras (Pessoa 2)
 - [ ] Testes da primeira entrega (Pessoa 4)
 
