@@ -201,7 +201,7 @@ npm run typecheck
 |---|---|
 | Emanuel Henrique (Pessoa 1) | Estrutura, Grupo da Casa, Tarefas e Rodízio |
 | Pessoa 2 | Interface mobile e integração visual |
-| Pessoa 3 | Autenticação, financeiro, compras e notificações |
+| Maria Luiza (Pessoa 3) | Autenticação, financeiro, compras e notificações |
 | Pessoa 4 | Testes, revisão e validação |
 
 ## 📌 Referências
