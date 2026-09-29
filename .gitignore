@@ -8,13 +8,49 @@ npm-debug.*
 *.key
 *.mobileprovision
 *.orig.*
-veda
 web-build/
+
+# Variáveis de ambiente (preservar apenas o exemplo)
 *.env
 !.env.example
 
 # macOS
 .DS_Store
 
-# coverage
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Coverage e testes
 coverage/
+__tests__/__snapshots__/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Protótipos e mockups (não versionar imagens grandes)
+prototipo_telas/
+
+# Logs
+*.log
+logs/
+
+# Build artifacts
+android/app/build/
+ios/Pods/
+ios/build/
+
+# Firebase local (emuladores, cache)
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# Expo local
+.expo-shared/
