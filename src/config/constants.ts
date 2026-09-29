@@ -1,0 +1,9 @@
+export const INVITE_CODE_LENGTH = 6;
+export const INVITE_CODE_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+export const MAX_HOUSE_NAME_LENGTH = 50;
+export const MAX_EXPENSE_TITLE_LENGTH = 100;
+export const MAX_TASK_TITLE_LENGTH = 100;
+export const MAX_TASK_DESCRIPTION_LENGTH = 500;
+export const ITEMS_PER_PAGE = 20;
+export const CURRENCY_LOCALE = 'pt-BR';
+export const CURRENCY_CODE = 'BRL';
